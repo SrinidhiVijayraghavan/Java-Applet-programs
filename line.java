@@ -1,41 +1,27 @@
-package applet;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.*;
 
-/*
-	Draw Line in Applet Window Example 
-	This java example shows how to draw lines in an applet window using 
-	drawLine method of Graphics class. 
-*/
- 
-/*
-<applet code="DrawLineExample" width=200 height=200>
-</applet>
-*/
- 
- 
-import java.applet.Applet;
-import java.awt.Graphics;
- 
- 
-public class line extends Applet{
- 
-	public void paint(Graphics g){
-		
-		/*
-		 * to draw line in an applet window use,
-		 * void drawLine(int x1,int y1, int x2, int y2)
-		 * method.
-		 * 
-		 * This method draws a line between (x1,y1) and (x2,y2)
-		 * coordinates in a current color.
-		 */
-		
-		//this will draw a line between (10,10) and (50,50) coordinates. 
-		g.drawLine(10,10,50,50);
-		
-		//draw vertical line
-		g.drawLine(10,50,10,100);
-		
-		//draw horizontal line
-		g.drawLine(10,10,50,10);
-	}
+class line extends JFrame{
+
+    public line(){
+        JPanel panel=new JPanel();
+        getContentPane().add(panel);
+        setSize(450,450);
+      
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);  // fixes the immediate problem.
+        Graphics2D g2 = (Graphics2D) g;
+        g.setColor (new Color(128,0,128));
+        Line2D lin = new Line2D.Float(1, 1, 450, 450);
+        g2.draw(lin);
+
+    }
+
+    public static void main(String []args){
+        line s=new line();
+        s.setVisible(true);
+    }
 }
