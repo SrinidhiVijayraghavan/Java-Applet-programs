@@ -1,37 +1,22 @@
 package applet;
 
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.*;  
 
-public class image extends Frame{
-  Image img;
-  public static void main(String[] args){
-  image ai = new image();
-  }
-
-  public image(){
-  super("Image Frame");
-  MediaTracker mt = new MediaTracker(this);
-  img = Toolkit.getDefaultToolkit().getImage("img.jpg");
-  mt.addImage(img,0);
-  setSize(100,100);
-  setVisible(true);
-  addWindowListener(new WindowAdapter(){
-  public void windowClosing(WindowEvent we){
-  dispose();
-  }
-  });
-  }
-  public void update(Graphics g){
-  paint(g);
-  }
+import java.applet.*;  
   
-  public void paint(Graphics g){
-  if(img != null)
-  g.drawImage(img,10,10, this);
-  else
-  g.clearRect(0, 0, getSize().width, getSize().height);
-  }
+  
+public class image extends Applet{
 
+  
+  Image picto;  
+  
+  public void init() {  
+    picto = getImage(getCodeBase(),"imgeg.jpg");  
+  }  
+    
+  public void paint(Graphics g) {  
+    g.drawImage(picto, 60,60, this);  
+  }  
+ 
 }
