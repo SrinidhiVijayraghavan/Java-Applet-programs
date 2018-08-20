@@ -1,36 +1,34 @@
-package applet;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.*;
 
+class circle extends JFrame{
 
-import java.applet.Applet;
-import java.awt.Color;
-import java.awt.Graphics;
- 
-public class circle extends Applet{
- 
-	public void paint(Graphics g){
-		
-		//set color to red
-		 g.setColor(Color.red);
-		
-		/*
-		 * to draw an arc in an applet window use,
-		 * void drawArc(int x1,int y1, int width, int height,int startAngle, int arcAngle)
-		 * method.
-		 * 
-		 * This method draws an arc of specified width and
-		 * height at (x1,y1)
-		 */
-		
-		//this will draw an arc of width 50 & height 100 at (10,10)
-		g.drawArc(10,10,100,100,0,360);
-		g.setColor(Color.GREEN);
-		g.fillOval(10,10,100,100);
-		
-		
-		/*
-		 * To draw a filled arc use
-		 * fillArc(int x1,int y1, int width, int height,int startAngle, int arcAngle)
-		 * method of Graphics class.
-		 */
-	}
+    public circle(){
+        JPanel panel=new JPanel();
+        getContentPane().add(panel);
+        setSize(450,450);
+      
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);  // fixes the immediate problem.
+        Graphics2D g2 = (Graphics2D) g;
+        
+        g.drawRoundRect(40, 160, 90, 90, 200, 200);
+        // using drawOval()
+g.drawArc(150, 160, 90, 90,180,180);
+g.drawLine(150,205,240,205);
+       // using drawArc()
+
+g.drawArc(270, 160, 90, 90, 0, 180);
+
+g.drawLine(270,205,360,205);
+
+    }
+
+    public static void main(String []args){
+        circle s=new circle();
+        s.setVisible(true);
+    }
 }
